@@ -408,6 +408,10 @@ customElements.define('cal-header', Cal_Header);
 customElements.define('cal-body', Cal_Body);
 customElements.define('my-calendar', Calender);
 
-let mycalendar = document.createElement('my-calendar');
+function init() {
+    let mycalendar = document.createElement('my-calendar');
 
-document.body.appendChild(mycalendar);
+    document.body.appendChild(mycalendar);
+}
+
+init();
