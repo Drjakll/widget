@@ -357,14 +357,38 @@ class Cal_Body extends HTMLElement {
 
 class Calender extends HTMLElement {
 
-    static observedAttributes = ["init"];
+    static observedAttributes = ["show"];
 
     constructor() {
         super();
     }
 
     connectedCallback() {
-        let cb = document.createElement('cal-body');
+
+        this.wrapper = document.createElement("div");
+        this.wrapper.style.position = "fixed";
+        this.wrapper.style.left = "calc(100% - 400px)";
+        this.wrapper.style.top = "calc(100% - 500px)";
+
+
+        this.div = document.createElement("div");
+
+        this.div.style.border = "black solid 0.5px";
+        this.div.style.borderRadius = "50px";
+        this.div.style.height = "50px";
+        this.div.style.width = "50px";
+        this.div.style.position = "relative";
+
+        this.div.onclick = () => {
+
+            let a = this.getAttribute("show");
+
+            this.setAttribute("show", `${a === "block" ? "none" : "block"}`);
+        }
+
+        this.wrapper.appendChild(this.div);
+
+        let  cb = document.createElement("cal-body");
 
         cb.parent = this;
 
@@ -382,20 +406,34 @@ class Calender extends HTMLElement {
 
         let days_arr = InsertDates(start_day, end_date);
 
+
         cb.NewYear = year;
         cb.NewMonth = month;
         cb.NewDates = JSON.stringify(days_arr);
 
-        this.innerHTML = `
-            <div style="width: 400px; display: block; border: black solid 0.5px; z-index: 99999; position: fixed; left: calc(100% - 400px); top: calc(100% - 500px);">
+        this.calbody = document.createElement("div");
 
-                ${cb.outerHTML}
+        this.calbody.style.width = "400px";
+        this.calbody.style.display = "none";
+        this.calbody.style.border = "black solid 0.5px";
 
-            </div>
-        `;
+        this.calbody.appendChild(cb);
+
+        this.wrapper.appendChild(this.calbody);
+
+        this.appendChild(this.wrapper);
+
+    }
+
+    ShowHide = (trigger) => {
+
+        this.calbody.style.display = trigger;
+
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
+
+        this.ShowHide(newVal);
 
     }
 
