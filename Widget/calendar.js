@@ -363,8 +363,7 @@ class Calender extends HTMLElement {
         super();
     }
 
-    attributeChangedCallback(name, oldVal, newVal) {
-
+    connectedCallback() {
         let cb = document.createElement('cal-body');
 
         cb.parent = this;
@@ -394,6 +393,9 @@ class Calender extends HTMLElement {
 
             </div>
         `;
+    }
+
+    attributeChangedCallback(name, oldVal, newVal) {
 
     }
 
@@ -405,3 +407,7 @@ customElements.define('dir-button', Dir_Button);
 customElements.define('cal-header', Cal_Header);
 customElements.define('cal-body', Cal_Body);
 customElements.define('my-calendar', Calender);
+
+let mycalendar = document.createElement('my-calendar');
+
+document.body.appendChild(mycalendar);
