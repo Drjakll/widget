@@ -86,7 +86,7 @@ class CompareTwoImages extends HTMLElement {
         
         let style = document.createElement("style");
         
-        style.textContent = `@import './style.css`;
+        style.textContent = `@import 'style.css`;
         
         let divWrapper = document.createElement("div");
         
