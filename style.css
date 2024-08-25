@@ -1,0 +1,52 @@
+
+#frame {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: rgba(0,0,0,0.5) solid 0.5px;
+    position: relative;
+}
+
+#frame .img-frame {
+    height: 100%;
+    width: 50%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+#frame .img-frame .inner-img-1, #frame .img-frame .inner-img-2 {
+    height: 100%;
+    width: 500px;
+    object-fit: fill;
+    position: absolute;
+}
+
+#frame .img-frame {
+    border-right: rgba(0,0,0,1) solid 1px;
+}
+
+#frame .img-frame .inner-img-2 {
+    right: 0%;
+}
+
+#frame #mid-button {
+    height: 50px;
+    width: 50px;
+    border: rgba(0,0,0,0.5) solid 0.5px;
+    border-radius: 50px;
+    background-color: bisque;
+    position: absolute;
+    z-index: 999;
+}
+
+#frame #mid-button:hover {
+    cursor: pointer;
+}
+
+div {
+    background-color: white;
+}
